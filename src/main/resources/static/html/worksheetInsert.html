@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增工单</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/ckeckbox.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../js/worksheetInsert.js"></script>
+</head>
+<body>
+<h4 style='border:10px solid #06da93;background-color: #06da93;color: white'>工单申请：</h4>
+<div id="indexBody"
+     style="border:2px solid #1c2b36;background-color: white;width: 700px;margin-left: 50px;margin-top: 50px;">
+    <form action="Http://localhost:8080/worksheetCreate" method="post">
+        <div style="height: 70px;width: 600px;margin-left: 50px;" class="form-check form-check-inline">
+            <button type="submit" class="btn btn-primary">
+                <img style="height: 38px;width: 50px;" src="../../file/rey.png"/>&nbsp;&nbsp;<b>发送</b>
+            </button>
+            <label style="margin-left: 40px" for="worksheetAdmin">请选择审核人员:</label>
+            <select style="width: 300px;vertical-align:middle;margin-left: 5px;"
+                    class="form-control" id="worksheetAdmin" name="worksheetAdmin">
+            </select>
+        </div>
+        <div style="height:70px;width: 600px;margin-left: 50px;" class="form-check form-check-inline">
+            <label for="worksheetAdmin">请选择申报设备:</label>
+            <select style="width: 457px;vertical-align:middle;margin-left: 5px;"
+                    class="form-control" id="worksheetEquipment" name="worksheetEquipment">
+            </select>
+        </div>
+        <div style="width: 600px;margin-left: 50px;margin-bottom: 30px;">
+            <label for="worksheetContent">工单内容：</label>
+            <textarea id="worksheetContent" name="worksheetContent" class="form-control" rows="13"></textarea>
+        </div>
+    </form>
+</div>
+</body>
+</html>

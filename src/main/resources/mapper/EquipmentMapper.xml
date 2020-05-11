@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.system.computer.mapper.EquipmentMapper" >
+  <resultMap id="BaseResultMap" type="com.system.computer.pojo.Equipment" >
+    <id column="equipment_id" property="equipmentId" jdbcType="INTEGER" />
+    <result column="equipment_describe" property="equipmentDescribe" jdbcType="VARCHAR" />
+    <result column="equipment_cabinet" property="equipmentCabinet" jdbcType="INTEGER" />
+    <result column="equipment_storehouse" property="equipmentStorehouse" jdbcType="INTEGER" />
+    <result column="equipment_online" property="equipmentOnline" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    equipment_id, equipment_describe, equipment_cabinet, equipment_storehouse, equipment_online
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.system.computer.pojo.EquipmentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from equipment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from equipment
+    where equipment_id = #{equipmentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from equipment
+    where equipment_id = #{equipmentId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.system.computer.pojo.EquipmentExample" >
+    delete from equipment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.system.computer.pojo.Equipment" >
+    insert into equipment (equipment_id, equipment_describe, equipment_cabinet, 
+      equipment_storehouse, equipment_online)
+    values (#{equipmentId,jdbcType=INTEGER}, #{equipmentDescribe,jdbcType=VARCHAR}, #{equipmentCabinet,jdbcType=INTEGER}, 
+      #{equipmentStorehouse,jdbcType=INTEGER}, #{equipmentOnline,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.system.computer.pojo.Equipment" >
+    insert into equipment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="equipmentId != null" >
+        equipment_id,
+      </if>
+      <if test="equipmentDescribe != null" >
+        equipment_describe,
+      </if>
+      <if test="equipmentCabinet != null" >
+        equipment_cabinet,
+      </if>
+      <if test="equipmentStorehouse != null" >
+        equipment_storehouse,
+      </if>
+      <if test="equipmentOnline != null" >
+        equipment_online,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="equipmentId != null" >
+        #{equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentDescribe != null" >
+        #{equipmentDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentCabinet != null" >
+        #{equipmentCabinet,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentStorehouse != null" >
+        #{equipmentStorehouse,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentOnline != null" >
+        #{equipmentOnline,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.system.computer.pojo.EquipmentExample" resultType="java.lang.Integer" >
+    select count(*) from equipment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update equipment
+    <set >
+      <if test="record.equipmentId != null" >
+        equipment_id = #{record.equipmentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.equipmentDescribe != null" >
+        equipment_describe = #{record.equipmentDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.equipmentCabinet != null" >
+        equipment_cabinet = #{record.equipmentCabinet,jdbcType=INTEGER},
+      </if>
+      <if test="record.equipmentStorehouse != null" >
+        equipment_storehouse = #{record.equipmentStorehouse,jdbcType=INTEGER},
+      </if>
+      <if test="record.equipmentOnline != null" >
+        equipment_online = #{record.equipmentOnline,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update equipment
+    set equipment_id = #{record.equipmentId,jdbcType=INTEGER},
+      equipment_describe = #{record.equipmentDescribe,jdbcType=VARCHAR},
+      equipment_cabinet = #{record.equipmentCabinet,jdbcType=INTEGER},
+      equipment_storehouse = #{record.equipmentStorehouse,jdbcType=INTEGER},
+      equipment_online = #{record.equipmentOnline,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.system.computer.pojo.Equipment" >
+    update equipment
+    <set >
+      <if test="equipmentDescribe != null" >
+        equipment_describe = #{equipmentDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentCabinet != null" >
+        equipment_cabinet = #{equipmentCabinet,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentStorehouse != null" >
+        equipment_storehouse = #{equipmentStorehouse,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentOnline != null" >
+        equipment_online = #{equipmentOnline,jdbcType=TINYINT},
+      </if>
+    </set>
+    where equipment_id = #{equipmentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.system.computer.pojo.Equipment" >
+    update equipment
+    set equipment_describe = #{equipmentDescribe,jdbcType=VARCHAR},
+      equipment_cabinet = #{equipmentCabinet,jdbcType=INTEGER},
+      equipment_storehouse = #{equipmentStorehouse,jdbcType=INTEGER},
+      equipment_online = #{equipmentOnline,jdbcType=TINYINT}
+    where equipment_id = #{equipmentId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增工单</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/ckeckbox.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../js/equipmentAdmin.js"></script>
+</head>
+<body>
+<div class="modal fade" id="createEquipment">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">添加设备</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form action="Http://localhost:8080/equipmentCreate" method="post">
+                <div class="modal-body">
+                    <label for="equipmentCabinet">请选择机房信息:</label>
+                    <select class="form-control" id="equipmentCabinet" name="equipmentCabinet">
+                    </select>
+                    <label for="equipmentStorehouse">请选择库房信息:</label>
+                    <select class="form-control" id="equipmentStorehouse" name="equipmentStorehouse">
+                    </select>
+                    <label for="equipmentDescrible">设备描述：</label>
+                    <textarea id="equipmentDescrible" name="equipmentDescrible" class="form-control"
+                              rows="10"></textarea>
+                    是否在线运行：<input type='checkbox' name='equipmentOnline'>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">发送</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="indexBody"></div>
+</body>
+</html>

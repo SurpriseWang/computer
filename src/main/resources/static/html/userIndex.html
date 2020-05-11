@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>机房管理系统-首页</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/jquery-kq-nav-left.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="../js/userIndex.js"></script>
+</head>
+
+<body>
+<ul class="nav-left-container">
+    <div style="margin-bottom: 50px">
+        <b style="color: white">欢迎登录，</b><br>
+        <b id="userName" style="color: white;font-size: 18px;width: 10px"></b>
+        <a class="btn btn-danger" style="color:white;float:right;margin-top: -10px;margin-right: 20px;"
+           href="Http://localhost:8080/logoutUser">退出</a>
+    </div>
+    <li>
+        <a>
+            <span class="glyphicon glyphicon-home f12" aria-hidden="true"></span>
+            <span style="color: white">报表统计</span>
+            <span class="glyphicon glyphicon-menu-right f12 fr" aria-hidden="true"></span>
+        </a>
+        <ul class="nav-left-container-small">
+            <li>
+                <a id="allEquipmentAdmin" style="color: white">全部设备信息</a>
+            </li>
+            <li>
+                <a id="allCabinet" style="color: white">全部机柜信息</a>
+            </li>
+            <li>
+                <a id="allStorehouseAdmin" style="color: white">全部库房信息</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a>
+            <span class="glyphicon glyphicon-home f12" aria-hidden="true"></span>
+            <span style="color: white">工单管理</span>
+            <span class="glyphicon glyphicon-menu-right f12 fr" aria-hidden="true"></span>
+        </a>
+        <ul class="nav-left-container-small">
+            <li>
+                <a id="worksheetInsert" style="color: white">工单申请</a>
+            </li>
+            <li>
+                <a id="worksheetBack" style="color: white">待审批工单撤回</a>
+            </li>
+            <li>
+                <a id="worksheetAll" style="color: white">用户历史全部工单</a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<div id="htmlBody" style="width: 1316px;margin-left: 220px;">
+    <div id="indexBody" style="margin: 0;"></div>
+</div>
+<script>
+
+</script>
+</body>
+
+</html>

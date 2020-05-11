@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>机房管理系统-管理员登录</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-image: url(../file/adminLogin.jpg);background-size:cover;">
+<div class="col-12" style="position: fixed;z-index: 1;">
+    <div class="col-4  offset-lg-4" style="margin-top: 100px;padding: 100px;
+    background-color: white;border-radius: 6px;opacity:0.9;">
+        <form action="Http://localhost:8080/loginAdmin" method="post">
+            <label for="adminName">账户名:</label>
+            <input type="text" class="form-control" id="adminName" name="adminName" placeholder="请输入管理员账号">
+            <label for="adminPassword">密码:</label>
+            <input type="password" class="form-control" id="adminPassword" name="adminPassword" placeholder="请输入管理员密码">
+            </br>
+            <button type="submit" class="col-6 offset-lg-3 btn btn-primary">登录</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

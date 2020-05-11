@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.system.computer.mapper.CabinetMapper" >
+  <resultMap id="BaseResultMap" type="com.system.computer.pojo.Cabinet" >
+    <id column="cabinet_id" property="cabinetId" jdbcType="INTEGER" />
+    <result column="cabinet_describe" property="cabinetDescribe" jdbcType="VARCHAR" />
+    <result column="cabinet_address" property="cabinetAddress" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cabinet_id, cabinet_describe, cabinet_address
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.system.computer.pojo.CabinetExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from cabinet
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cabinet
+    where cabinet_id = #{cabinetId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cabinet
+    where cabinet_id = #{cabinetId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.system.computer.pojo.CabinetExample" >
+    delete from cabinet
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.system.computer.pojo.Cabinet" >
+    insert into cabinet (cabinet_id, cabinet_describe, cabinet_address
+      )
+    values (#{cabinetId,jdbcType=INTEGER}, #{cabinetDescribe,jdbcType=VARCHAR}, #{cabinetAddress,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.system.computer.pojo.Cabinet" >
+    insert into cabinet
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cabinetId != null" >
+        cabinet_id,
+      </if>
+      <if test="cabinetDescribe != null" >
+        cabinet_describe,
+      </if>
+      <if test="cabinetAddress != null" >
+        cabinet_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cabinetId != null" >
+        #{cabinetId,jdbcType=INTEGER},
+      </if>
+      <if test="cabinetDescribe != null" >
+        #{cabinetDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="cabinetAddress != null" >
+        #{cabinetAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.system.computer.pojo.CabinetExample" resultType="java.lang.Integer" >
+    select count(*) from cabinet
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update cabinet
+    <set >
+      <if test="record.cabinetId != null" >
+        cabinet_id = #{record.cabinetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.cabinetDescribe != null" >
+        cabinet_describe = #{record.cabinetDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cabinetAddress != null" >
+        cabinet_address = #{record.cabinetAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update cabinet
+    set cabinet_id = #{record.cabinetId,jdbcType=INTEGER},
+      cabinet_describe = #{record.cabinetDescribe,jdbcType=VARCHAR},
+      cabinet_address = #{record.cabinetAddress,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.system.computer.pojo.Cabinet" >
+    update cabinet
+    <set >
+      <if test="cabinetDescribe != null" >
+        cabinet_describe = #{cabinetDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="cabinetAddress != null" >
+        cabinet_address = #{cabinetAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cabinet_id = #{cabinetId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.system.computer.pojo.Cabinet" >
+    update cabinet
+    set cabinet_describe = #{cabinetDescribe,jdbcType=VARCHAR},
+      cabinet_address = #{cabinetAddress,jdbcType=VARCHAR}
+    where cabinet_id = #{cabinetId,jdbcType=INTEGER}
+  </update>
+</mapper>
