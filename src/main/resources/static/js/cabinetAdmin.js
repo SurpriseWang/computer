@@ -14,8 +14,8 @@ $(document).ready(function () {
                 $("<tr id=tr" + i + "></tr>").appendTo(tbodyDiv);
                 var homeTr = $("#tbodyDiv #tr" + i + "");
                 $("<td id='deleone'><input type='checkbox' name='cabinetId' value=" + v.cabinetId + "></td>").appendTo(homeTr);
-                $("<td><h5>机房设备总数：" + v.cabinetDescribe + " </h5></td>").appendTo(homeTr);
                 $("<td><h5>机房地址：" + v.cabinetAddress + "</h5></td>").appendTo(homeTr);
+                $("<td><h5>机房设备总数：" + v.cabinetDescribe + " </h5></td>").appendTo(homeTr);
             });
             $("<center id='delesecond'><button type='button' class='btn btn-success' " +
                 "data-toggle='modal' data-target='#createCabinet'>新建,添加机柜</button>" +

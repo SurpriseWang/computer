@@ -11,4 +11,6 @@ public interface EquipmentService {
     void equipmentCreate(Equipment equipment);
 
     void deleteEquipmentById(Integer equipmentId);
+
+    List<EquipmentVo> queryEquipmentByExample(Integer cabinetInput, Integer cabinetInput1);
 }

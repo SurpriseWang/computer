@@ -33,12 +33,19 @@ public class EquipmentController {
         equipmentService.equipmentCreate(equipment);
         return "redirect:Http://localhost:8080/html/adminIndex.html";
     }
+
     //deleteEquipmentById
     @RequestMapping("/deleteEquipmentById")
-    public String deleteEquipmentById(Integer[] equipmentId){
-        for (Integer id :equipmentId) {
+    public String deleteEquipmentById(Integer[] equipmentId) {
+        for (Integer id : equipmentId) {
             equipmentService.deleteEquipmentById(id);
         }
         return "redirect:Http://localhost:8080/html/adminIndex.html";
+    }
+
+    @ResponseBody
+    @RequestMapping("/queryEquipmentByExample")
+    public List<EquipmentVo> queryEquipmentByExample(Integer cabinetInput, Integer storehouseInput) {
+        return equipmentService.queryEquipmentByExample(cabinetInput, storehouseInput);
     }
 }

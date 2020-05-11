@@ -14,8 +14,8 @@ $(document).ready(function () {
                 $("<tr id=tr" + i + "></tr>").appendTo(tbodyDiv);
                 var homeTr = $("#tbodyDiv #tr" + i + "");
                 $("<td><input type='checkbox' name='storehouseId' value=" + v.storehouseId + "></td>").appendTo(homeTr);
-                $("<td><h5>库房设备总数：" + v.storehouseDescribe + " </h5></td>").appendTo(homeTr);
                 $("<td><h5>库房地址：" + v.storehouseAddress + "</h5></td>").appendTo(homeTr);
+                $("<td><h5>库房设备总数：" + v.storehouseDescribe + " </h5></td>").appendTo(homeTr);
             });
             $("<center><button type='button' class='btn btn-success' " +
                 "data-toggle='modal' data-target='#createStorehouse'>新建,添加库房</button>" +

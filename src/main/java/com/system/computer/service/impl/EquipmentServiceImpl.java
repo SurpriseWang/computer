@@ -44,11 +44,37 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     @Override
     public void equipmentCreate(Equipment equipment) {
+        Cabinet cabinet = cabinetMapper.selectByPrimaryKey(equipment.getEquipmentCabinet());
+        Integer value = Integer.valueOf(cabinet.getCabinetDescribe());
+        cabinet.setCabinetDescribe((value += 1).toString());
+        cabinetMapper.updateByPrimaryKey(cabinet);
+        Storehouse storehouse = storehouseMapper.selectByPrimaryKey(equipment.getEquipmentStorehouse());
+        value = Integer.valueOf(storehouse.getStorehouseDescribe());
+        storehouse.setStorehouseDescribe((value += 1).toString());
+        storehouseMapper.updateByPrimaryKey(storehouse);
         equipmentMapper.insertSelective(equipment);
     }
 
     @Override
     public void deleteEquipmentById(Integer equipmentId) {
         equipmentMapper.deleteByPrimaryKey(equipmentId);
+    }
+
+    @Override
+    public List<EquipmentVo> queryEquipmentByExample(Integer cabinetInput, Integer cabinetInput1) {
+        List<EquipmentVo> equipmentVos = new ArrayList<>();
+        EquipmentExample equipmentExample = new EquipmentExample();
+        equipmentExample.createCriteria().andEquipmentIdIsNotNull().andEquipmentCabinetEqualTo(cabinetInput).andEquipmentCabinetEqualTo(cabinetInput);
+        List<Equipment> equipments = equipmentMapper.selectByExample(equipmentExample);
+        for (Equipment equipment : equipments) {
+            Cabinet cabinet = cabinetMapper.selectByPrimaryKey(equipment.getEquipmentCabinet());
+            Storehouse storehouse = storehouseMapper.selectByPrimaryKey(equipment.getEquipmentStorehouse());
+            EquipmentVo equipmentVo = new EquipmentVo();
+            equipmentVo.cabinet = cabinet;
+            equipmentVo.storehouse = storehouse;
+            equipmentVo.equipment = equipment;
+            equipmentVos.add(equipmentVo);
+        }
+        return equipmentVos;
     }
 }

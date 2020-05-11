@@ -38,4 +38,15 @@ $(document).ready(function () {
         htmlBody.load("allCabinet.html");
     });
 
+    $("#allEquipment").click(function () {
+        var htmlBody = $("#htmlBody");
+        htmlBody.html("");
+        htmlBody.load("allEquipment.html");
+    });
+
+    $("#allStorehouse").click(function () {
+        var htmlBody = $("#htmlBody");
+        htmlBody.html("");
+        htmlBody.load("allStorehouse.html");
+    });
 });
